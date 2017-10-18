@@ -2,13 +2,13 @@
 
 namespace codingbootcamp\exercises;
 
+use \PDO;
+use \PDOException;
+
 // FQN(fully qualified name): codingbootcamp\exercises\db
 class db {
+
     protected static $pdo = null;
-    protected static $host = 'localhost';
-    protected static $username = 'root';
-    protected static $password = 'rootroot';
-    protected static $database = 'notes';
 
     public static function pdo() {
         if(static::$pdo === null) {
@@ -17,9 +17,9 @@ class db {
                 // store the connection (PDO) into static::$pdo
                 static::$pdo = new PDO(
                 // 'mysql:dbname=database_name;host=locahost;charset=utf8'
-                'mysql:dbname='.static::$database.';host='.static::$host.';charset=utf8', 
-                static::$username,
-                static::$password
+                'mysql:dbname='.config('database.database').';host='.config('database.host').';charset=utf8', 
+                config('database.username'),
+                config('database.password')
                 );
 
                 // set error reporting

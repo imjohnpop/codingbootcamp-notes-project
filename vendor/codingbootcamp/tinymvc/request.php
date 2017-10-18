@@ -7,16 +7,19 @@
     {
         // easy way to access and retrieve information from request
         // by using this function
+        /*
+        *   get information from request or a default value
+        */
         public static function get($name, $default = null)
         {
-            // checking is the $_REQUEST is set
+            // checking if the $_REQUEST is set
             if(isset($_REQUEST[$name]))
             {
-                echo $name; // echoing the value from $_GET
+                return $_REQUEST[$name]; // return the value from $_GET
             }
             else
             {
-                echo $default; // echoing the default value
+                return $default; // return the default value
             }
         }
     }
